@@ -1,73 +1,95 @@
-# React + TypeScript + Vite
+Burnout Radar is a premium, predictive mental wellness dashboard designed for high-performance software engineering teams. By running passive background telemetry across biometric signals, screen time exposure, and code output velocity, it calculates an active structural burnout risk index.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Instead of tracking burnout after exhaustion manifests, it acts as a proactive early warning system—notifying professionals and teams a full week before an impending cognitive crash so they can adjust workloads sustainably.
 
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
-
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
-
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+burnout-radar/
+├── public/
+│   └── favicon.ico
+├── src/
+│   ├── assets/
+│   │   └── logo.svg
+│   │
+│   ├── components/                 # Reusable atomic UI primitives
+│   │   ├── ui/
+│   │   │   ├── Button.tsx
+│   │   │   ├── Card.tsx
+│   │   │   ├── Badge.tsx
+│   │   │   ├── ProgressRing.tsx
+│   │   │   └── Skeleton.tsx
+│   │   ├── layout/                 # Global dashboard shell wrappers
+│   │   │   ├── AppLayout.tsx
+│   │   │   ├── Sidebar.tsx
+│   │   │   └── TopBar.tsx
+│   │   └── charts/                 # Custom visualization layers
+│   │       ├── BurnoutGauge.tsx
+│   │       ├── TrendLine.tsx
+│   │       └── SignalCard.tsx
+│   │
+│   ├── features/                   # Feature modules (isolated logic + UI)
+│   │   ├── auth/
+│   │   │   ├── components/
+│   │   │   │   ├── LoginForm.tsx
+│   │   │   │   └── OnboardingSteps.tsx
+│   │   │   └── hooks/
+│   │   │       └── useAuthMutation.ts
+│   │   ├── dashboard/
+│   │   │   ├── components/
+│   │   │   │   ├── RiskSummary.tsx
+│   │   │   │   ├── SignalsGrid.tsx
+│   │   │   │   └── WeeklyTrend.tsx
+│   │   │   └── hooks/
+│   │   │       └── useDashboardData.ts
+│   │   ├── checkin/
+│   │   │   ├── components/
+│   │   │   │   ├── CheckInForm.tsx
+│   │   │   │   └── CheckInStreak.tsx
+│   │   │   └── hooks/
+│   │   │       └── useCheckinMutation.ts
+│   │   ├── insights/
+│   │   │   ├── components/
+│   │   │   │   ├── InsightCard.tsx
+│   │   │   │   └── InsightFeed.tsx
+│   │   │   └── hooks/
+│   │   │       └── useInsightQueries.ts
+│   │   └── settings/
+│   │       ├── components/
+│   │       │   ├── GoogleFitConnect.tsx
+│   │       │   └── NotificationPrefs.tsx
+│   │       └── hooks/
+│   │           └── useSettingsMutation.ts
+│   │
+│   ├── hooks/                      # Global cross-cutting lifecycle hooks
+│   │   ├── useAuth.ts
+│   │   ├── useBurnoutScore.ts
+│   │   ├── useCheckins.ts
+│   │   ├── useGoogleFit.ts
+│   │   └── useInsights.ts
+│   │
+│   ├── lib/                        # Singletons, network clients & pure algorithms
+│   │   ├── supabase.ts
+│   │   ├── googleFit.ts
+│   │   ├── anthropic.ts
+│   │   └── burnoutEngine.ts
+│   │
+│   ├── pages/                      # Root route screen layout compositions
+│   │   ├── LandingPage.tsx
+│   │   ├── OnboardingPage.tsx
+│   │   ├── DashboardPage.tsx
+│   │   ├── CheckInPage.tsx
+│   │   ├── InsightsPage.tsx
+│   │   └── SettingsPage.tsx
+│   │
+│   ├── context/                    # Shared context providers
+│   │   └── AuthContext.tsx
+│   │
+│   ├── types/                      # Shared global TypeScript interfaces
+│   │   └── index.ts
+│   │
+│   ├── App.tsx                     # Entry router / application configuration wrapper
+│   └── main.tsx                    # React DOM canvas target mount initialization
+│
+├── .env
+├── index.html
+├── tailwind.config.ts
+├── tsconfig.json
+└── vite.config.ts
