@@ -11,7 +11,7 @@ import { SignupPage } from "../pages/SignupPage";
 import { DemoPage } from "../pages/DemoPage";
 import { OnboardingPage } from "../pages/OnboardingPage";
 import { DashboardPage } from "../pages/DashboardPage";
-//import { PredictionPage } from "./pages/PredictionPage";
+import { PredictionPage } from "../pages/PredictionPage"; 
 //import { InsightsPage } from "./pages/InsightsPage";
 //import { SettingsPage } from "./pages/SettingsPage";
 
@@ -52,11 +52,11 @@ export const router = createBrowserRouter([
             path: "/dashboard",
             element: <DashboardPage />,
           },
-          /*{
+          {
             path: "/predictions",
             element: <PredictionPage />,
           },
-          {
+          /*{
             path: "/insights",
             element: <InsightsPage />,
           },
