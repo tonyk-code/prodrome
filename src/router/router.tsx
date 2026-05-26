@@ -6,8 +6,8 @@ import { createBrowserRouter, Navigate } from "react-router-dom";
 
 // Pages
 import { LandingPage } from "../pages/LandingPage";
-//import { LoginPage } from "./pages/LoginPage";
-//import { SignupPage } from "./pages/SignupPage";
+import { LoginPage } from "../pages/LoginPage";
+import { SignupPage } from "../pages/SignupPage";
 import { DemoPage } from "../pages/DemoPage";
 //import { OnboardingPage } from "./pages/OnboardingPage";
 //import { DashboardPage } from "./pages/DashboardPage";
@@ -21,14 +21,14 @@ export const router = createBrowserRouter([
     path: "/",
     element: <LandingPage />,
   },
-  /* {
+  {
     path: "/login",
     element: <LoginPage />,
-  }, */
-  /* {
+  },
+  {
     path: "/signup",
     element: <SignupPage />,
-  }, */
+  },
 
   // --- Hackathon Judge / Visitor Demo Route ---
   // Operates without authentication, bypassing session checks
