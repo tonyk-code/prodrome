@@ -1,19 +1,19 @@
 import { createBrowserRouter, Navigate } from "react-router-dom";
 
 // Layouts
-/* import { AppLayout } from "./components/layout/AppLayout";
-import { ProtectedRoute } from "./components/layout/ProtectedRoute"; */
+//import { AppLayout } from "./components/layout/AppLayout";
+//import { ProtectedRoute } from "./components/layout/ProtectedRoute";
 
 // Pages
 import { LandingPage } from "../pages/LandingPage";
-/* import { LoginPage } from "./pages/LoginPage";
-import { SignupPage } from "./pages/SignupPage";
-import { DemoPage } from "./pages/DemoPage";
-import { OnboardingPage } from "./pages/OnboardingPage";
-import { DashboardPage } from "./pages/DashboardPage";
-import { PredictionPage } from "./pages/PredictionPage";
-import { InsightsPage } from "./pages/InsightsPage";
-import { SettingsPage } from "./pages/SettingsPage"; */
+//import { LoginPage } from "./pages/LoginPage";
+//import { SignupPage } from "./pages/SignupPage";
+import { DemoPage } from "../pages/DemoPage";
+//import { OnboardingPage } from "./pages/OnboardingPage";
+//import { DashboardPage } from "./pages/DashboardPage";
+//import { PredictionPage } from "./pages/PredictionPage";
+//import { InsightsPage } from "./pages/InsightsPage";
+//import { SettingsPage } from "./pages/SettingsPage";
 
 export const router = createBrowserRouter([
   // --- Public Marketing Routes ---
@@ -24,11 +24,11 @@ export const router = createBrowserRouter([
   /* {
     path: "/login",
     element: <LoginPage />,
-  },
-  {
+  }, */
+  /* {
     path: "/signup",
     element: <SignupPage />,
-  },
+  }, */
 
   // --- Hackathon Judge / Visitor Demo Route ---
   // Operates without authentication, bypassing session checks
@@ -38,7 +38,7 @@ export const router = createBrowserRouter([
   },
 
   // --- Registered User Protected Application Routes ---
-  {
+  /*{
     element: <ProtectedRoute />, // Validates Supabase session persistence
     children: [
       {
